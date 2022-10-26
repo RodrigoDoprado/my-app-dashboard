@@ -12,7 +12,7 @@ export default function Menu() {
             <div className="collapse navbar-collapse" id="navbarResponsive">
                 <ul className="navbar-nav">
                     <li className="nav-item"><a className="nav-link js-scroll-trigger" href="/dashboard">Dashbord</a></li>
-                    <li className="nav-item"><a className="nav-link js-scroll-trigger" href="/dashboard/produto">Produto</a></li>
+                    <li className="nav-item"><a className="nav-link js-scroll-trigger" href="/dashboard/produto/cadastrar">Produto</a></li>
                     <li className="nav-item"><a className="nav-link js-scroll-trigger" href="/dashboard/perfil">Perfil</a></li>
                     {/* <li className="nav-item"><a className="nav-link js-scroll-trigger" href="#skills">Skills</a></li>
                     <li className="nav-item"><a className="nav-link js-scroll-trigger" href="#interests">Interests</a></li> */}
