@@ -1,26 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
+
 import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Login from './pages/auth/login';
+import Register from './pages/auth/register';
+import DashboardIndex from './pages';
+import Cadastrar from './pages/cadastrar';
+import Perfil from './pages/perfil';
 
 function App() {
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* <AuthProvider> */}
+      <BrowserRouter>
+        <Routes>
+          {/* rota public */}
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          {/* rota Privada */}
+          <Route path="*" element={<DashboardIndex />} />
+          <Route path="/" element={<DashboardIndex />} />
+          <Route path="/dashboard" element={<DashboardIndex />} />
+          <Route path="/dashboard/produto/cadastrar" element={<Cadastrar />} />
+          <Route path="/dashboard/perfil" element={<Perfil />} />
+          
+        </Routes>
+      </BrowserRouter>
+      {/* </AuthProvider> */}
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
