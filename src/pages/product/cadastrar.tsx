@@ -86,28 +86,28 @@ export default function Cadastrar() {
                                                 />
                                             </div>
                                             <div className="col">
-                                                <input
-                                                    type="text"
-                                                    className="form-control"
+                                                <select
+                                                    className="form-select"
                                                     id="category"
                                                     name="category"
-                                                    placeholder="Categoria"
                                                     required
                                                     value={category}
                                                     onChange={handleInputChange}
-                                                />
+                                                >
+                                                    <option>Categoria</option>
+                                                </select>
                                             </div>
                                             <div className="col">
-                                                <input
-                                                    type="text"
-                                                    className="form-control"
+                                                <select
+                                                    className="form-select"
                                                     id="genre"
                                                     name="genre"
-                                                    placeholder="Gênero"
                                                     required
                                                     value={genre}
                                                     onChange={handleInputChange}
-                                                />
+                                                >
+                                                    <option>Gênero</option>
+                                                </select>
                                             </div>
                                             <div className="col">
                                                 <input
@@ -136,7 +136,7 @@ export default function Cadastrar() {
                         </div>
                     </div>
                 </div>
-            </section>
+            </section >
         </>
     )
 }
