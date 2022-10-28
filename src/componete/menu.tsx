@@ -15,10 +15,15 @@ export default function Menu() {
                     <li className="nav-item"><a className="nav-link js-scroll-trigger" href="/dashboard/produto/cadastrar">Produto</a></li>
                     <li className="nav-item"><a className="nav-link js-scroll-trigger" href="/dashboard/funcionario">Funcionario</a></li>
                     <li className="nav-item"><a className="nav-link js-scroll-trigger" href="/dashboard/perfil">Perfil</a></li>
+<<<<<<< HEAD
                     {/* <li className="nav-item"><a className="nav-link js-scroll-trigger" href="#interests">Interests</a></li> */}
+=======
+                    {/* <li className="nav-item"><a className="nav-link js-scroll-trigger" href="#skills">Skills</a></li>
+                    <li className="nav-item"><a className="nav-link js-scroll-trigger" href="#interests">Interests</a></li> */}
+>>>>>>> da2023c26c4a872be7d833a8846d796f11a0bdf8
                     <li className="nav-item"><a className="nav-link js-scroll-trigger" href="/login">Sair</a></li>
                 </ul>
             </div>
         </nav>
     )
-}
+} 
