@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Api } from "../../service";
 import "./login.css"
@@ -14,7 +14,8 @@ const initialState = {
 export default function Register() {
     const [state, setState] = useState(initialState);
     const { avatar, name, email, password } = state;
-
+    const navegate = useNavigate();
+    
     const handleInputChange = (e: { target: { name: any; value: any; }; }) => {
         let { name, value } = e.target;
         setState({
@@ -24,7 +25,7 @@ export default function Register() {
     };
 
     const addUser = async (data: { avatar: string; name: string; email: string; password: string; }) => {
-        const response = await Api.post("/accout/login", data);
+        const response = await Api.post("/account/create", data);
         if (response.status === 200) {
             toast.success(response.data);
         }
@@ -41,7 +42,7 @@ export default function Register() {
             //     updateUser(state, id);
             // }
             addUser(state)
-            // setTimeout(() => history.push("/"), 500);
+            setTimeout(() => navegate("/"), 500);
         }
     };
 

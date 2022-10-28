@@ -1,11 +1,11 @@
 import { Helmet } from "react-helmet";
-import Menu from "../componete/menu";
-import Register from "./auth/register";
+import Menu from "../../componete/menu";
+import Register from "../auth/register";
 
-export default function Funcionario() {
+export default function CreateEmployee() {
     return (
         <>
-            <Helmet><title>Dashboard - Funcionario</title></Helmet>
+            <Helmet><title>Cadastro - Funcionario - Dashboard</title></Helmet>
             <Menu />
             <section className="resume-section" id="experience">
                 <div className="resume-section-content">

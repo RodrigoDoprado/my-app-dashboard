@@ -5,7 +5,7 @@ import Register from "./auth/register";
 export default function DashboardIndex() {
     return (
         <>
-            <Helmet><title>Dashboard - Home</title></Helmet>
+            <Helmet><title>Home - Dashboard</title></Helmet>
             <Menu />
 
             <section className="resume-section" id="experience">

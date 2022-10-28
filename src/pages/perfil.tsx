@@ -5,7 +5,7 @@ import Register from "./auth/register";
 export default function Perfil() {
     return (
         <>
-            <Helmet><title>Dashboard - Perfil</title></Helmet>
+            <Helmet><title>Perfil - Dashboard</title></Helmet>
             <Menu />
 
             <section className="resume-section">
