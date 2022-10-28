@@ -2,17 +2,16 @@ import { Helmet } from "react-helmet";
 import Menu from "../componete/menu";
 import Register from "./auth/register";
 
-export default function Perfil() {
+export default function Funcionario() {
     return (
         <>
-            <Helmet><title>Dashboard - Perfil</title></Helmet>
+            <Helmet><title>Dashboard - Funcionario</title></Helmet>
             <Menu />
-
-            <section className="resume-section">
+            <section className="resume-section" id="experience">
                 <div className="resume-section-content">
-                    <div className="container-fluid">
+                    <div className="container">
                         <div className="row">
-                            <h1>Perfil</h1>
+                            <h1>Funcionario</h1>
                             <div className="col-sm">
                                 <Register />
                             </div>
