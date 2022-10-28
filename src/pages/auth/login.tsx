@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Helmet } from "react-helmet";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Api } from "../../service";
 import "./login.css";
-import Register from "./register";
 
 const initialState = {
     email: "",
@@ -13,6 +13,7 @@ const initialState = {
 export default function Login() {
     const [state, setState] = useState(initialState);
     const { email, password } = state;
+    const navegate = useNavigate();
 
     const handleInputChange = (e: { target: { name: any; value: any; }; }) => {
         let { name, value } = e.target;
@@ -23,9 +24,10 @@ export default function Login() {
     };
 
     const loginUser = async (data: { email: string; password: string; }) => {
-        const response = await Api.post("/accout/login", data);
+        const response = await Api.post("/account/login", data);
         if (response.status === 200) {
             toast.success(response.data);
+            setTimeout(() => navegate("/"), 500);
         }
     }
 
@@ -100,7 +102,6 @@ export default function Login() {
                                 </div>
                             </div>
                         </div>
-                        
                     </div>
                 </div>
             </section>
