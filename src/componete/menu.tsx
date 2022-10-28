@@ -16,7 +16,7 @@ export default function Menu() {
                     <li className="nav-item"><a className="nav-link js-scroll-trigger" href="/dashboard/perfil">Perfil</a></li>
                     {/* <li className="nav-item"><a className="nav-link js-scroll-trigger" href="#skills">Skills</a></li>
                     <li className="nav-item"><a className="nav-link js-scroll-trigger" href="#interests">Interests</a></li> */}
-                    <li className="nav-item"><a className="nav-link js-scroll-trigger" href="/">Sair</a></li>
+                    <li className="nav-item"><a className="nav-link js-scroll-trigger" href="/login">Sairam</a></li>
                 </ul>
             </div>
         </nav>
