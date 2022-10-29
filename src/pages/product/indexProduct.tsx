@@ -1,12 +1,10 @@
 import { Helmet } from "react-helmet";
-import Menu from "../../componete/menu";;
 
 export default function indexProduct() {
     return (
         <>
             <Helmet><title>Produto - Dashboard</title></Helmet>
-            <Menu />
-
+            
             <section className="resume-section">
                 <div className="resume-section-content">
                     <div className="container">

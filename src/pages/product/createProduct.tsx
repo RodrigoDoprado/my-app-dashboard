@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Helmet } from "react-helmet";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import Menu from "../../componete/menu";
 import { Api } from "../../service";
 
 const initialState = {
@@ -51,7 +50,6 @@ export default function CreateProduct() {
     return (
         <>
             <Helmet><title>Cadastro - Produto - Dashboard</title></Helmet>
-            <Menu />
 
             <section className="resume-section">
                 <div className="resume-section-content">
