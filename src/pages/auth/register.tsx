@@ -25,9 +25,14 @@ export default function Register() {
     };
 
     const addUser = async (data: { avatar: string; name: string; email: string; password: string; }) => {
-        const response = await Api.post("/account/create", data);
-        if (response.status === 200) {
+        try {
+            const response = await Api.post("/account/create", data);
+
             toast.success(response.data);
+            alert("User cadastrado com Sucesso")
+            setTimeout(() => navegate("/"), 500);
+        } catch (error) {
+            alert(error);
         }
     }
 

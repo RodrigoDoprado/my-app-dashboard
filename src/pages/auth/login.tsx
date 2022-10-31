@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Api } from "../../service";
 import "./login.css";
+import Register from "./register";
 
 const initialState = {
     email: "",
@@ -26,14 +27,11 @@ export default function Login() {
     const loginUser = async (data: { email: string; password: string; }) => {
         try {
             const response = await Api.post("/account/login", data);
-            if (response.status === 200) {
-                toast.success(response.data);
-                setTimeout(() => navegate("/"), 500);
-            }
 
-            alert(toast.error(response.data));
+            toast.success(response.data);
+            setTimeout(() => navegate("/"), 500);
         } catch (error) {
-            alert("Error Conexão com a API")
+            alert(error);
         }
     }
     const handleSubmit = (e: { preventDefault: () => void; }) => {
@@ -55,61 +53,61 @@ export default function Login() {
     return (
         <>
             <Helmet><title>Login</title></Helmet>
-            <section className="resume-section" >
-                <div className="resume-section-content">
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-sm">
-                                <div className="card">
-                                    <div className="card-title">
-                                        <h2>Login</h2>
+
+            <div className="container">
+                <div className="row">
+                    <div className="col-sm">
+                        <div className="card">
+                            <div className="card-title">
+                                <h2>Login</h2>
+                            </div>
+                            <div className="card-body">
+                                <form onSubmit={handleSubmit}>
+                                    <div className="mb-3">
+                                        <input
+                                            type="email"
+                                            className="form-control"
+                                            id="email"
+                                            name="email"
+                                            placeholder="Email"
+                                            required
+                                            value={email}
+                                            onChange={handleInputChange}
+                                        />
                                     </div>
-                                    <div className="card-body">
-                                        <form onSubmit={handleSubmit}>
-                                            <div className="mb-3">
-                                                <input
-                                                    type="email"
-                                                    className="form-control"
-                                                    id="email"
-                                                    name="email"
-                                                    placeholder="Email"
-                                                    required
-                                                    value={email}
-                                                    onChange={handleInputChange}
-                                                />
-                                            </div>
-                                            <div className="mb-3">
-                                                <input
-                                                    type="password"
-                                                    className="form-control"
-                                                    id="password"
-                                                    name="password"
-                                                    placeholder="Senha"
-                                                    required
-                                                    value={password}
-                                                    onChange={handleInputChange}
-                                                />
-                                            </div>
-                                            {/* <div className="mb-3 form-check">
+                                    <div className="mb-3">
+                                        <input
+                                            type="password"
+                                            className="form-control"
+                                            id="password"
+                                            name="password"
+                                            placeholder="Senha"
+                                            required
+                                            value={password}
+                                            onChange={handleInputChange}
+                                        />
+                                    </div>
+                                    {/* <div className="mb-3 form-check">
                                             <input type="checkbox" className="form-check-input" id="exampleCheck1" />
                                             <label className="form-check-label" htmlFor="exampleCheck1">Check me out</label>
                                         </div> */}
-                                            <div className="mb-3">
-                                                <button
-                                                    type="submit"
-                                                    className="btn btn-primary"
-                                                >
-                                                    Avançar
-                                                </button>
-                                            </div>
-                                        </form>
+                                    <div className="mb-3">
+                                        <button
+                                            type="submit"
+                                            className="btn btn-primary"
+                                        >
+                                            Avançar
+                                        </button>
                                     </div>
-                                </div>
+                                </form>
+                            </div>
+                            <div className="col-sm">
+                                <Register />
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
         </>
     )
 }
