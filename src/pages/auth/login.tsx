@@ -24,13 +24,18 @@ export default function Login() {
     };
 
     const loginUser = async (data: { email: string; password: string; }) => {
-        const response = await Api.post("/account/login", data);
-        if (response.status === 200) {
-            toast.success(response.data);
-            setTimeout(() => navegate("/"), 500);
+        try {
+            const response = await Api.post("/account/login", data);
+            if (response.status === 200) {
+                toast.success(response.data);
+                setTimeout(() => navegate("/"), 500);
+            }
+
+            alert(toast.error(response.data));
+        } catch (error) {
+            alert("Error Conexão com a API")
         }
     }
-
     const handleSubmit = (e: { preventDefault: () => void; }) => {
         e.preventDefault();
         if (!email || !password) {
