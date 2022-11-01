@@ -2,9 +2,9 @@ import { useState } from "react";
 import { Helmet } from "react-helmet";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { Api } from "../../service";
+import { useAuth } from "../../context/authProvider/useAuth";
+
 import "./login.css";
-import Register from "./register";
 
 const initialState = {
     email: "",
@@ -15,6 +15,16 @@ export default function Login() {
     const [state, setState] = useState(initialState);
     const { email, password } = state;
     const navegate = useNavigate();
+    const auth = useAuth();
+
+    const loginUser = async (data: { email: string; password: string; }) => {
+        try {
+            auth.authenticate(data.email, data.password)
+            navegate('/')
+        } catch (error) {
+
+        }
+    }
 
     const handleInputChange = (e: { target: { name: any; value: any; }; }) => {
         let { name, value } = e.target;
@@ -24,35 +34,14 @@ export default function Login() {
         });
     };
 
-    const loginUser = async (data: { email: string; password: string; }) => {
-        // try {
-        await Api.post("/account/login", data)
-            .catch(function (error) {
-                if (error.response) {
-                    alert(error.response.data);
-                }
-            })
-            .then(() => {
-                // toast.success(data);
-                setTimeout(() => navegate("/"), 500);
-            })
 
-        // } catch (error) {
-        //     alert(error);
-        // }
-    }
     const handleSubmit = (e: { preventDefault: () => void; }) => {
         e.preventDefault();
         if (!email || !password) {
             toast.error("Please provide value in each input field");
         } else {
-            // if (!id) {
-            //     addUser(state);
-            // } else {
-            //     updateUser(state, id);
-            // }
             loginUser(state)
-            // setTimeout(() => history.push("/"), 500);
+
         }
     };
 

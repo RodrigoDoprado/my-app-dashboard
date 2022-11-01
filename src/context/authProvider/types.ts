@@ -1,5 +1,6 @@
 
 export interface IUser {
+    name?: string;
     email?: string;
     token?: string;
 
@@ -10,6 +11,6 @@ export interface IContext extends IUser {
     logout: () => void;
 }
 
-export interface IAuthProvider{
+export interface IAuthProvider {
     children: JSX.Element;
 }

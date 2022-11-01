@@ -9,10 +9,10 @@ export default function Sidebar() {
     const logout = () => {
         auth.logout();
     }
-
+ 
     return (
         <>
-            {auth.token ?
+            {auth.token ? <></> :
                 <>
                     <nav className="navbar navbar-expand-lg navbar-dark bg-dark" id="sideNav">
                         <a className="navbar-brand js-scroll-trigger" href="/dashboard">
@@ -26,13 +26,11 @@ export default function Sidebar() {
                                 <li className="nav-item"><a className="nav-link" href="/dashboard/produto">Produto</a></li>
                                 <li className="nav-item"><a className="nav-link" href="/dashboard/funcionario">Funcionario</a></li>
                                 <li className="nav-item"><a className="nav-link" href="/dashboard/perfil">Perfil</a></li>
-                                <li className="nav-item"><a className="nav-link" href="/login" onSubmit={logout}>Sair</a></li>
+                                <li className="nav-item"><a className="nav-link" href="" onSubmit={logout}>Sair</a></li>
                             </ul>
                         </div>
                     </nav>
                 </>
-                :
-                <></>
             }
         </>
     )
