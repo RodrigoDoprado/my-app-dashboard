@@ -1,6 +1,6 @@
-
-import './App.css';
+import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Api } from './service';
 import Login from './pages/auth/login';
 import DashboardIndex from './pages';
 import Perfil from './pages/perfil';
@@ -11,20 +11,18 @@ import CreateEmployee from './pages/Employee/createEmployee';
 import { AuthProvider } from './context/authProvider';
 import { RouterPrivete } from './componete/routerPrivete';
 import Menu from './componete/sidebar';
-import { useEffect, useState } from 'react';
-import { Api } from './service';
 import Page404 from './pages/404';
+import './App.css';
 
 function App() {
 
   const [page, listPage] = useState(Boolean);
   useEffect(() => {
     Api.get("/")
-    .then(()=>{listPage(true)})
+      .then(() => { listPage(true) })
       .catch(() => { listPage(false); })
 
   }, []);
-
   return (
     <>
       {page === true ? <>

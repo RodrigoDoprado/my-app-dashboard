@@ -19,7 +19,7 @@ export default function Login() {
 
     const loginUser = async (data: { email: string; password: string; }) => {
         try {
-            auth.authenticate(data.email, data.password)
+           await auth.authenticate(data.email, data.password)
             navegate('/')
         } catch (error) {
 

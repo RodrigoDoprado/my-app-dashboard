@@ -4,7 +4,7 @@ import Login from "../../pages/auth/login";
 export const RouterPrivete = ({ children }: { children: JSX.Element }) => {
   const auth = useAuth()
 
-  if (!auth.token) return <Login/> 
+  if (!auth.token) return <Login/>
     
   return children;
 }

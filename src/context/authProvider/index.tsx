@@ -3,7 +3,6 @@ import { IAuthProvider, IContext, IUser } from "./types";
 import { getUserLocalStorage, LoginRequest, setUserLocalStorage } from "./util";
 
 export const AuthContext = createContext<IContext>({} as IContext)
-
 export const AuthProvider = ({ children }: IAuthProvider) => {
   const [user, setUser] = useState<IUser | null>()
 

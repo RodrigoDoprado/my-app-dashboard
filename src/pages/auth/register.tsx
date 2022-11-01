@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { useAuth } from "../../context/authProvider/useAuth";
 import { Api } from "../../service";
 import "./register.css"
 
@@ -15,6 +16,7 @@ export default function Register() {
     const [state, setState] = useState(initialState);
     const { avatar, name, email, password } = state;
     const navegate = useNavigate();
+    const auth = useAuth();
 
     const handleInputChange = (e: { target: { name: any; value: any; }; }) => {
         let { name, value } = e.target;
@@ -55,7 +57,7 @@ export default function Register() {
             <div className="col-sm" id="register">
                 <div className="card">
                     <div className="card-title">
-                        <h2>Registrar</h2>
+                        {!auth.token?<><h2>Registrar</h2></>:<><h2>Alteração</h2></>}
                     </div>
                     <div className="card-body">
                         <form onSubmit={handleSubmit}>
