@@ -25,14 +25,21 @@ export default function Login() {
     };
 
     const loginUser = async (data: { email: string; password: string; }) => {
-        try {
-            const response = await Api.post("/account/login", data);
+        // try {
+        await Api.post("/account/login", data)
+            .catch(function (error) {
+                if (error.response) {
+                    alert(error.response.data);
+                }
+            })
+            .then(() => {
+                // toast.success(data);
+                setTimeout(() => navegate("/"), 500);
+            })
 
-            toast.success(response.data);
-            setTimeout(() => navegate("/"), 500);
-        } catch (error) {
-            alert(error);
-        }
+        // } catch (error) {
+        //     alert(error);
+        // }
     }
     const handleSubmit = (e: { preventDefault: () => void; }) => {
         e.preventDefault();
@@ -56,7 +63,7 @@ export default function Login() {
 
             <div className="container">
                 <div className="row">
-                    <div className="col-sm">
+                    <div className="col-sm" id="login">
                         <div className="card">
                             <div className="card-title">
                                 <h2>Login</h2>
@@ -100,9 +107,6 @@ export default function Login() {
                                         </button>
                                     </div>
                                 </form>
-                            </div>
-                            <div className="col-sm">
-                                <Register />
                             </div>
                         </div>
                     </div>

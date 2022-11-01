@@ -32,7 +32,6 @@ export default function Register() {
             alert("User cadastrado com Sucesso")
             setTimeout(() => navegate("/"), 500);
         } catch (error) {
-            alert(error);
         }
     }
 

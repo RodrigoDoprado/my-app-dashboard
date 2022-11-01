@@ -1,4 +1,5 @@
-import { Api } from "../../service"
+
+import { Api } from "../../service";
 import { IUser } from "./types";
 
 export function setUserLocalStorage(user: IUser | null) {
