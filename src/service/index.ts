@@ -1,9 +1,7 @@
 import axios from "axios"
-import { getUserLocalStorage } from "../context/authProvider/util"
 
 export const Api = axios.create({
-    // baseURL: "https://reqres.in/api",
-    baseURL: "http://localhost:5000",
+    baseURL: process.env.DB_URL,
 })
 
 // Api.interceptors.request.use(
