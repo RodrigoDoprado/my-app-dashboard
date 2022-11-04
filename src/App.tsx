@@ -8,14 +8,12 @@ import CreateProduct from './pages/product/createProduct';
 import CreateEmployee from './pages/Employee/createEmployee';
 import { AuthProvider } from './context/authProvider';
 import { RouterPrivete } from './componete/routerPrivete';
-import Menu from './componete/sidebar';
 import './App.css';
 
 function App() {
   
   return (
     <div className="App">
-      <Menu />
       <AuthProvider>
         <BrowserRouter>
           <Routes>

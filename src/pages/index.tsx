@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet";
+import Sidebar from "../componete/sidebar";
 import { useAuth } from "../context/authProvider/useAuth";
 import"./index.css"
 
@@ -9,7 +10,7 @@ export default function DashboardIndex() {
     return (
         <>
             <Helmet><title>Home - Dashboard</title></Helmet>
-
+            <Sidebar/>
             <section className="resume-section" id="experience">
                 <div className="resume-section-content">
                     <div className="container">

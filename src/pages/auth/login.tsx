@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Helmet } from "react-helmet";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 import { useAuth } from "../../context/authProvider/useAuth";
 
 import "./login.css";
@@ -17,15 +17,6 @@ export default function Login() {
     const navegate = useNavigate();
     const auth = useAuth();
 
-    const loginUser = async (data: { email: string; password: string; }) => {
-        try {
-           await auth.authenticate(data.email, data.password)
-            navegate('/')
-        } catch (error) {
-
-        }
-    }
-
     const handleInputChange = (e: { target: { name: any; value: any; }; }) => {
         let { name, value } = e.target;
         setState({
@@ -35,12 +26,13 @@ export default function Login() {
     };
 
 
-    const handleSubmit = (e: { preventDefault: () => void; }) => {
+    const handleSubmit = async (e: { preventDefault: () => void; }) => {
         e.preventDefault();
-        if (!email || !password) {
-            toast.error("Please provide value in each input field");
-        } else {
-            loginUser(state)
+        try {
+            await auth.authenticate(email, password)
+            .then(()=>{navegate('/')})
+            
+        } catch (error) {
 
         }
     };

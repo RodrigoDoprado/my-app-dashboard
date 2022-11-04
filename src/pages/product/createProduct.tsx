@@ -101,7 +101,7 @@ export default function CreateProduct() {
                                                         return (
                                                             <>
                                                                 <option value={0}>Categoria</option>
-                                                                <option value={index}>{item.name}</option>
+                                                                <option value={index}>{item}</option>
                                                             </>
                                                         )
                                                     })}
@@ -120,7 +120,7 @@ export default function CreateProduct() {
                                                         return (
                                                             <>
                                                                 <option value={0}>Gênero</option>
-                                                                <option value={index}>{item.name}</option>
+                                                                <option value={index}>{item}</option>
                                                             </>
                                                         )
                                                     })}
