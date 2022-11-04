@@ -23,7 +23,7 @@ export default function Sidebar() {
                     <li className="nav-item"><a className="nav-link" href="/dashboard/produto">Produto</a></li>
                     <li className="nav-item"><a className="nav-link" href="/dashboard/funcionario">Funcionario</a></li>
                     <li className="nav-item"><a className="nav-link" href="/dashboard/perfil">Perfil</a></li>
-                    <li className="nav-item"><a className="nav-link" href="?" onClick={logoutUser}>Sair</a></li>
+                    <li className="nav-item"><a className="nav-link" href="/login" onClick={logoutUser}>Sair</a></li>
 
                 </ul>
             </div>
