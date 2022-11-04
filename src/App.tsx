@@ -1,6 +1,4 @@
-import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Api } from './service';
 import Login from './pages/auth/login';
 import DashboardIndex from './pages';
 import Perfil from './pages/perfil';
