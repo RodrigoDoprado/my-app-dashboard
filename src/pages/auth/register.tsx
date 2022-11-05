@@ -31,7 +31,7 @@ export default function Register() {
             .then(()=>{alert("User cadastrado com Sucesso")})
             
         } catch (error) {
-            
+            alert("Error ao cadastrar user ")
         }
     }
 
