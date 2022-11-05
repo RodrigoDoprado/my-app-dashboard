@@ -1,11 +1,8 @@
 import { useState } from "react";
 import { Helmet } from "react-helmet";
 import { useNavigate } from "react-router-dom";
-// import { toast } from "react-toastify";
 import { useAuth } from "../../context/authProvider/useAuth";
-
 import "./login.css";
-import Register from "./register";
 
 const initialState = {
     email: "",
@@ -92,9 +89,7 @@ export default function Login() {
                             </div>
                         </div>
                     </div>
-                    {/* <div className="col-sm">
-                        <Register/>
-                    </div> */}
+                    {/* register */}
                 </div>
             </div>
         </>
