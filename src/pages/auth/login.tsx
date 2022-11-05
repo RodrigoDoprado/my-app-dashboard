@@ -23,18 +23,10 @@ export default function Login() {
         });
     };
 
-
     const handleSubmit = async (e: { preventDefault: () => void; }) => {
         e.preventDefault();
-        try {
-            await auth.authenticate(email, password)
-                .then(() => { navegate('/') })
-
-        } catch (error) {
-            alert("Login ou Senha Invalido !")
-        }
+            await auth.authenticate(email, password).then(() => { navegate('/') })
     };
-
 
     return (
         <>
