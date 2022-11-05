@@ -28,10 +28,10 @@ export default function Login() {
         e.preventDefault();
         try {
             await auth.authenticate(email, password)
-            .then(()=>{navegate('/')})
-            
-        } catch (error) {
+                .then(() => { navegate('/') })
 
+        } catch (error) {
+            alert("Login ou Senha Invalido !")
         }
     };
 

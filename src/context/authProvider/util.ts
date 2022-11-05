@@ -6,6 +6,6 @@ export async function LoginRequest(email: string, password: string) {
         const request = await Api.post("account/login", { email, password })
         return request.data;
     } catch (error) {
-        return error
+        alert("Desculpa tente outra vez!")
     }
 }
