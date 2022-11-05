@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useAuth } from "../../context/authProvider/useAuth";
 import { Api } from "../../service";
@@ -15,7 +14,6 @@ const initialState = {
 export default function Register() {
     const [state, setState] = useState(initialState);
     const { avatar, name, email, password } = state;
-    const navegate = useNavigate();
     const auth = useAuth();
 
     const handleInputChange = (e: { target: { name: any; value: any; }; }) => {
@@ -28,12 +26,12 @@ export default function Register() {
 
     const addUser = async (data: { avatar: string; name: string; email: string; password: string; }) => {
         try {
-            const response = await Api.post("/account/create", data);
-
-            toast.success(response.data);
-            alert("User cadastrado com Sucesso")
-            setTimeout(() => navegate("/"), 500);
+            
+            await Api.post("account/create", data)
+            .then(()=>{alert("User cadastrado com Sucesso")})
+            
         } catch (error) {
+            
         }
     }
 
@@ -48,7 +46,6 @@ export default function Register() {
             //     updateUser(state, id);
             // }
             addUser(state)
-            setTimeout(() => navegate("/"), 500);
         }
     };
 

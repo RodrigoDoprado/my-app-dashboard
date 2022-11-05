@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/authProvider/useAuth";
 
 import "./login.css";
+import Register from "./register";
 
 const initialState = {
     email: "",
@@ -90,6 +91,9 @@ export default function Login() {
                                 </form>
                             </div>
                         </div>
+                    </div>
+                    <div className="col-sm">
+                        <Register/>
                     </div>
                 </div>
             </div>
