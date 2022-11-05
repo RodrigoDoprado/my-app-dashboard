@@ -92,9 +92,9 @@ export default function Login() {
                             </div>
                         </div>
                     </div>
-                    <div className="col-sm">
+                    {/*<div className="col-sm">
                         <Register/>
-                    </div> 
+                    </div> */}
                 </div>
             </div>
         </>
