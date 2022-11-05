@@ -89,13 +89,6 @@ export default function Login() {
                             </div>
                         </div>
                     </div>
-<<<<<<< HEAD
-                    {/* register */}
-=======
-                    {/*<div className="col-sm">
-                        <Register/>
-                    </div> */}
->>>>>>> 90b645bb3c9f4e43d4c5e4045e9d92e2a5f9880a
                 </div>
             </div>
         </>
