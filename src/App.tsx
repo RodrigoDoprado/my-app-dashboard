@@ -7,7 +7,8 @@ import IndexEmployee from './pages/Employee/indexEmployee';
 import CreateProduct from './pages/product/createProduct';
 import CreateEmployee from './pages/Employee/createEmployee';
 import { AuthProvider } from './context/authProvider';
-import { RouterPrivete } from './componete/routerPrivete';
+import { DashPrivete } from './componete/routerPrivete/dashboard';
+import { LogPrivete } from './componete/routerPrivete/login';
 import './App.css';
 
 function App() {
@@ -18,18 +19,18 @@ function App() {
         <BrowserRouter>
           <Routes>
             {/* rota public */}
-            <Route path="/login" element={<Login />} />
+            <Route path="/login" element={<LogPrivete><Login /></LogPrivete>} />
 
             {/* rota Privada */}
-            <Route path="*" element={<RouterPrivete><DashboardIndex /></RouterPrivete>} />
-            <Route path="/" element={<RouterPrivete><DashboardIndex /></RouterPrivete>} />
-            <Route path="/dashboard" element={<RouterPrivete><DashboardIndex /></RouterPrivete>} />
-            <Route path="/dashboard/produto" element={<RouterPrivete><IndexProduct /></RouterPrivete>} />
-            <Route path="/dashboard/produto/cadastrar" element={<RouterPrivete><CreateProduct /></RouterPrivete>} />
-            <Route path="/dashboard/funcionario" element={<RouterPrivete><IndexEmployee /></RouterPrivete>} />
-            <Route path="/dashboard/funcionario/cadastrar" element={<RouterPrivete><CreateEmployee /></RouterPrivete>} />
-            <Route path="/dashboard/perfil" element={<RouterPrivete><Perfil /></RouterPrivete>} />
-
+            <Route path="*" element={<DashPrivete><DashboardIndex /></DashPrivete>} />
+            <Route path="/" element={<DashPrivete><DashboardIndex /></DashPrivete>} />
+            <Route path="/dashboard" element={<DashPrivete><DashboardIndex /></DashPrivete>} />
+            <Route path="/dashboard/produto" element={<DashPrivete><IndexProduct /></DashPrivete>} />
+            <Route path="/dashboard/produto/cadastrar" element={<DashPrivete><CreateProduct /></DashPrivete>} />
+            <Route path="/dashboard/funcionario" element={<DashPrivete><IndexEmployee /></DashPrivete>} />
+            <Route path="/dashboard/funcionario/cadastrar" element={<DashPrivete><CreateEmployee /></DashPrivete>} />
+            <Route path="/dashboard/perfil" element={<DashPrivete><Perfil /></DashPrivete>} />
+            DashPrivete
           </Routes>
         </BrowserRouter>
       </AuthProvider>

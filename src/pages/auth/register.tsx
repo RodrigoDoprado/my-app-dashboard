@@ -12,6 +12,7 @@ const initialState = {
 };
 
 export default function Register() {
+    
     const [state, setState] = useState(initialState);
     const { avatar, name, email, password } = state;
     const auth = useAuth();
@@ -26,26 +27,30 @@ export default function Register() {
 
     const addUser = async (data: { avatar: string; name: string; email: string; password: string; }) => {
         try {
-            
+
             await Api.post("account/create", data)
-            .then(()=>{alert("User cadastrado com Sucesso")})
-            
+                .then(() => { alert("User cadastrado com Sucesso") })
+
         } catch (error) {
-            alert("Error ao cadastrar user ")
+            alert("cadastro não realizado ")
         }
     }
+
+    const updateUser = async (data: { avatar: string; name: string; email: string; password: string; }, id: string) => {
+        await Api.put(`account/up/${id}`, data)
+            .then(() => { alert("User cadastrado com Sucesso") })
+    };
 
     const handleSubmit = (e: { preventDefault: () => void; }) => {
         e.preventDefault();
         if (!name || !email || !password) {
             toast.error("Please provide value in each input field");
         } else {
-            // if (!id) {
-            //     addUser(state);
-            // } else {
-            //     updateUser(state, id);
-            // }
-            addUser(state)
+            if (!auth.id) {
+                addUser(state);
+            } else {
+                updateUser(state, auth.id);
+            }
         }
     };
 
@@ -54,7 +59,7 @@ export default function Register() {
             <div className="col-sm" id="register">
                 <div className="card">
                     <div className="card-title">
-                        {!auth.token?<><h2>Registrar</h2></>:<><h2>Alteração</h2></>}
+                        {!auth.token ? <><h2>Registrar</h2></> : <><h2>Alteração</h2></>}
                     </div>
                     <div className="card-body">
                         <form onSubmit={handleSubmit}>
@@ -109,7 +114,7 @@ export default function Register() {
                                     type="submit"
                                     className="btn btn-primary"
                                 >
-                                    Avançar
+                                    {auth.id ? "Salvar" : "Avançar"}
                                 </button>
                             </div>
                         </form>
