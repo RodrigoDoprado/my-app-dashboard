@@ -5,7 +5,7 @@ export interface IUser {
     name?: string;
     email?: string;
     token?: string;
-
+    menssage?: string;
 }
 
 export interface IContext extends IUser {

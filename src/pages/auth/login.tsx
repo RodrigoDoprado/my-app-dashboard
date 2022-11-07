@@ -12,6 +12,7 @@ const initialState = {
 export default function Login() {
     const [state, setState] = useState(initialState);
     const { email, password } = state;
+    const [error, setError] = useState(false);
     const navegate = useNavigate();
     const auth = useAuth();
 
@@ -25,13 +26,14 @@ export default function Login() {
 
     const handleSubmit = async (e: { preventDefault: () => void; }) => {
         e.preventDefault();
-            await auth.authenticate(email, password).then(() => { navegate('/') })
+        await auth.authenticate(email, password)
+            .then(() => { navegate('/') })
+            .catch(() => { setError(true) })
     };
 
     return (
         <>
             <Helmet><title>Login</title></Helmet>
-
             <div className="container">
                 <div className="row">
                     <div className="col-sm" id="login">
@@ -76,6 +78,13 @@ export default function Login() {
                                         >
                                             Avançar
                                         </button>
+                                    </div>
+                                    <div className="card-footer">
+                                        {error ? <>
+                                            <div className="alert alert-danger" role="alert">
+                                                Login e Senha Invalido
+                                            </div>
+                                        </> : <></>}
                                     </div>
                                 </form>
                             </div>

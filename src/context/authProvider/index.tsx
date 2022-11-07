@@ -20,7 +20,8 @@ export const AuthProvider = ({ children }: IAuthProvider) => {
       avatar: response.avatar,
       name: response.name,
       email: response.email, 
-      token: response.token 
+      token: response.token,
+      menssage: response.menssage,
     }
     localStorage.setItem("user", JSON.stringify(payload))
     setUser(payload)

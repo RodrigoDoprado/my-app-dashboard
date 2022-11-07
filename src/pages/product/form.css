@@ -1,8 +1,12 @@
  #product .card{
 
-    margin-top: 10rem;
+    margin-top: 5rem;
     width: 100%;
     border: none;
     text-align: center;
     align-items: center;
+}
+#product .card-footer{
+    border: none;
+    background-color: white;
 }

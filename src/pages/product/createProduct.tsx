@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Helmet } from "react-helmet";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
+import Sidebar from "../../componete/sidebar";
 import { Api } from "../../service";
 import "./form.css"
 
@@ -16,8 +16,9 @@ const initialState = {
 export default function CreateProduct() {
     const [state, setState] = useState(initialState);
     const { img, name, description, category, genre } = state;
-    const [selectGenre] = useState([]);
-    const [selectCategory] = useState([]);
+    const [error, setError] = useState(false);
+    // const [selectGenre] = useState([]);
+    // const [selectCategory] = useState([]);
     const navegate = useNavigate();
 
     const handleInputChange = (e: { target: { name: any; value: any; }; }) => {
@@ -29,31 +30,25 @@ export default function CreateProduct() {
     };
 
     const addProduct = async (data: { name: string; description: string; category: string; genre: string; }) => {
-        const response = await Api.post("/product/create", data);
-        if (response.status === 200) {
-            toast.success(response.data);
-        }
+        await Api.post("/product/create", data)
+            .then(() => { navegate("/dashboard/produto") })
+            .catch(() => { setError(true) })
+
     }
 
     const handleSubmit = (e: { preventDefault: () => void; }) => {
         e.preventDefault();
-        if (!name) {
-            toast.error("Please provide value in each input field");
-        } else {
-            // if (!id) {
-            //     addUser(state);
-            // } else {
-            //     updateUser(state, id);
-            // }
-            addProduct(state)
-            setTimeout(() => navegate("/dashboard/produto"), 500);
-        }
+        // if (!id) {
+        addProduct(state);
+        // } else {
+        //     updateUser(state, id);
+        // }
     };
 
     return (
         <>
             <Helmet><title>Cadastro - Produto - Dashboard</title></Helmet>
-
+            <Sidebar />
             <section className="resume-section">
                 <div className="resume-section-content">
                     <div className="container">
@@ -97,14 +92,7 @@ export default function CreateProduct() {
                                                     value={category}
                                                     onChange={handleInputChange}
                                                 >
-                                                    {selectCategory.map((item, index) => {
-                                                        return (
-                                                            <>
-                                                                <option value={0}>Categoria</option>
-                                                                <option value={index}>{item}</option>
-                                                            </>
-                                                        )
-                                                    })}
+                                                    <option value={0}>Categoria</option>
                                                 </select>
                                             </div>
                                             <div className="col">
@@ -116,15 +104,7 @@ export default function CreateProduct() {
                                                     value={genre}
                                                     onChange={handleInputChange}
                                                 >
-                                                    {selectCategory.map((item, index) => {
-                                                        return (
-                                                            <>
-                                                                <option value={0}>Gênero</option>
-                                                                <option value={index}>{item}</option>
-                                                            </>
-                                                        )
-                                                    })}
-
+                                                    <option value={0}>Gênero</option>
                                                 </select>
                                             </div>
                                             <div className="col">
@@ -146,6 +126,13 @@ export default function CreateProduct() {
                                                 >
                                                     Salvar
                                                 </button>
+                                            </div>
+                                            <div className="card-footer">
+                                                {error ? <>
+                                                    <div className="alert alert-danger" role="alert">
+                                                        Alteração não Realizadas
+                                                    </div>
+                                                </> : <></>}
                                             </div>
                                         </form>
                                     </div>

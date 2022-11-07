@@ -5,3 +5,8 @@
     text-align: center;
     align-items: center;
 }
+
+#register .card-footer{
+    border: none;
+    background-color: white;
+}
