@@ -1,11 +1,12 @@
 
 export interface IUser {
-    id?: string;
-    avatar?: string;
+    id?: number;
+    img?: string;
     name?: string;
-    email?: string;
+    email?: any;
     token?: string;
     menssage?: string;
+    password?: any;
 }
 
 export interface IContext extends IUser {

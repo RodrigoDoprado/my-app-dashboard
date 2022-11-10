@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet";
 import Sidebar from "../componete/sidebar";
 import { useAuth } from "../context/authProvider/useAuth";
-import"./index.css"
+import "./index.css"
 
 export default function DashboardIndex() {
 
@@ -10,7 +10,7 @@ export default function DashboardIndex() {
     return (
         <>
             <Helmet><title>Home - Dashboard</title></Helmet>
-            <Sidebar/>
+            <Sidebar />
             <section className="resume-section" id="experience">
                 <div className="resume-section-content">
                     <div className="container">
@@ -22,6 +22,7 @@ export default function DashboardIndex() {
                                         <h3 className="card-subtitle">Bem vindo {auth.name}</h3>
                                     </div>
                                     <div className="card-body">
+                                        <p className="card-text">id: {auth.id}</p>
                                         <p className="card-text">email: {auth.email}</p>
                                         <p className="card-text">token: {auth.token}</p>
                                     </div>

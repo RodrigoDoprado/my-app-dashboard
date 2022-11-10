@@ -3,18 +3,15 @@ import { Helmet } from "react-helmet";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/authProvider/useAuth";
 import "./login.css";
-
-const initialState = {
-    email: "",
-    password: "",
-};
+import Register from "./register";
 
 export default function Login() {
-    const [state, setState] = useState(initialState);
+    const auth = useAuth();
+    const [state, setState] = useState(auth);
     const { email, password } = state;
     const [error, setError] = useState(false);
     const navegate = useNavigate();
-    const auth = useAuth();
+
 
     const handleInputChange = (e: { target: { name: any; value: any; }; }) => {
         let { name, value } = e.target;
@@ -51,7 +48,6 @@ export default function Login() {
                                             name="email"
                                             placeholder="Email"
                                             required
-                                            value={email}
                                             onChange={handleInputChange}
                                         />
                                     </div>
@@ -63,7 +59,6 @@ export default function Login() {
                                             name="password"
                                             placeholder="Senha"
                                             required
-                                            value={password}
                                             onChange={handleInputChange}
                                         />
                                     </div>
@@ -90,6 +85,9 @@ export default function Login() {
                             </div>
                         </div>
                     </div>
+                    {/* <div className="col-sm">
+                        <Register/>
+                    </div> */}
                 </div>
             </div>
         </>

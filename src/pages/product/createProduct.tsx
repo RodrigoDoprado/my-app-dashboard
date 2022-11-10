@@ -68,6 +68,7 @@ export default function CreateProduct() {
                                                     id="img"
                                                     name="img"
                                                     value={img}
+                                                    multiple={false}
                                                     onChange={handleInputChange}
                                                 />
                                             </div>
