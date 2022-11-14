@@ -1,0 +1,26 @@
+ #employee .card{
+    margin-top: 5rem;
+    width: 100%;
+    border: none;
+    text-align: center;
+    align-items: center;
+}
+#employee .card-footer{
+    border: none;
+    background-color: white;
+}
+
+#employee a{
+    color: black;
+    text-decoration: none;
+}
+
+@media (min-width: 992px) {
+    section.resume-section {
+      padding-right: 15rem;
+    }
+
+     table{
+      margin-top: 5rem;
+    }
+  }

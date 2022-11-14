@@ -1,11 +1,3 @@
-@import '~compass-mixins/lib/compass/css3';
-
-*,
-:before,
-:after {
-  box-sizing: border-box;
-}
-
 // FONTS
 $sans: 'Source Sans Pro', Helvetica, Arial, sans-serif;
 
@@ -34,33 +26,34 @@ $white-off: #a8a4a2;
     width: 10rem;
     height: 100vh;
 
-  ul {
-    margin-top: 100%;
+    ul {
+      margin-top: 100%;
 
-    .img-profile {
-      max-width: 10rem;
-      max-height: 10rem;
-      border: 0.5rem solid rgba(255, 255, 255, 0.2);
-  }
-  }
+      .img-profile {
+        max-width: 10rem;
+        max-height: 100rem;
+        border: 0.5rem solid rgba(255, 255, 255, 0.2);
+      }
+    }
 
-  a {
-    padding: 1.1em 0;
-    color: $white-off;
-    font: 400 1.125em $sans;
-    text-align: center;
+    a {
+      padding: 1.1em 0;
+      color: $white-off;
+      font: 400 1.125em $sans;
+      text-align: center;
 
-    // text:{
-    //   align: center;
-    //   transform: lowercase;
-    // }
+      // text:{
+      //   align: center;
+      //   transform: lowercase;
+      // }
 
-    &:hover {
-      color: #fff;
+      &:hover {
+        color: #fff;
+      }
     }
   }
 }
-}
+
 
 // SOCIAL LINKS
 .social-links {
