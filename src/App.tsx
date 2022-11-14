@@ -12,7 +12,7 @@ import { LogPrivete } from './componete/routerPrivete/login';
 import './App.css';
 
 function App() {
-  
+
   return (
     <div className="App">
       <AuthProvider>
