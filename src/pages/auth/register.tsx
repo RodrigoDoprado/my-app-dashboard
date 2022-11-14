@@ -8,7 +8,7 @@ import "./register.css"
 export default function Register() {
     const auth = useAuth();
     const [state, setState] = useState(auth);
-    const {id, img, name, email, password, } = state;
+    const { id, img, name, email, password, token } = state;
     const [error, setError] = useState(false);
     const navegate = useNavigate()
 
@@ -34,11 +34,11 @@ export default function Register() {
 
     const handleSubmit = (e: { preventDefault: () => void; }) => {
         e.preventDefault();
-        if (!id) {
-            addUser(state);
-        } else {
-            updateUser(state, id);
-        }
+        // if (!id) {
+        addUser(state);
+        // } else {
+        //     updateUser(state, id);
+        // }
     };
 
     return (
@@ -48,7 +48,7 @@ export default function Register() {
                     <div className="card-head">
                         {error ? <>
                             <div className="alert alert-danger" role="alert">
-                                {auth.token?<>Alteração não Realizadas</>:<>E-mail Já Cadastrado</>}
+                                {auth.token ? <>Alteração não Realizadas</> : <>E-mail Já Cadastrado</>}
                             </div>
                         </> : <></>}
                     </div>
@@ -56,18 +56,21 @@ export default function Register() {
                         {!auth.token ? <><h2>Registrar</h2></> : <><h2>Alteração</h2></>}
                     </div>
                     <div className="card-body">
-                        <form onSubmit={handleSubmit}>
-                            <div className="col">
-                                {/* <input
+                        <form onSubmit={handleSubmit} encType="multipart/form-data">
+                            {/* <div className="col">
+                                <input
+                                    type={"hidden"}
                                     name="token"
-                                    value={auth.token}
+                                    value={token}
                                     onChange={handleInputChange}
-                                /> */}
+                                />
+                            </div> */}
+                            <div className="col">
                                 <input
                                     className="form-control"
                                     type="file"
-                                    id="img"
-                                    name="img"
+                                    // id="file"
+                                    name="file"
                                     // multiple={false}
                                     value={img}
                                     onChange={handleInputChange}
@@ -120,7 +123,7 @@ export default function Register() {
                         </form>
                     </div>
                 </div>
-            </div>
+            </div >
         </>
     )
 }

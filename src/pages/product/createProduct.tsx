@@ -65,8 +65,8 @@ export default function CreateProduct() {
                                                 <input
                                                     className="form-control"
                                                     type="file"
-                                                    id="img"
-                                                    name="img"
+                                                    id="file"
+                                                    name="file"
                                                     value={img}
                                                     multiple={false}
                                                     onChange={handleInputChange}
