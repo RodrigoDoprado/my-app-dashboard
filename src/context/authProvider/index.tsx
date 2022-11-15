@@ -16,7 +16,6 @@ export const AuthProvider = ({ children }: IAuthProvider) => {
   async function authenticate(email: string, password: string) {
     const response = await LoginRequest(email, password)
     const payload = {
-      id: response.id,
       avatar: response.avatar,
       name: response.name,
       email: response.email, 

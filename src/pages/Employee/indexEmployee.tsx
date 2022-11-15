@@ -1,9 +1,39 @@
+import { useState, useEffect } from "react";
 import { Helmet } from "react-helmet";
+import { toast } from "react-toastify";
 import Sidebar from "../../componete/sidebar";
-import"./employee.css"
+import { Api } from "../../service";
+import "./employee.css"
 
 
 export default function IndexEmployee() {
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        getUsers();
+    }, []);
+
+    const getUsers = async () => {
+        const response = await Api.get("account/getUsers");
+        if (response.status === 200) {
+            setData(response.data);
+        }
+    };
+
+    const onDeleteUser = async (id: any) => {
+        if (
+            window.confirm("Are you sure that you wanted to delete that user record")
+        ) {
+            const response = await Api.delete(`account/del/${id}`);
+            if (response.status === 200) {
+                toast.success(response.data);
+                getUsers();
+            }
+        }
+    }
+
+
+
     return (
         <>
             <Helmet><title>Funcionario - Dashboard</title></Helmet>
@@ -32,23 +62,32 @@ export default function IndexEmployee() {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>Jacob</td>
-                                        <td>Thornton</td>
-                                        <td>@fat</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        {/* <td colSpan="2">Larry the Bird</td> */}
-                                        <td>@twitter</td>
-                                    </tr>
+                                    {data &&
+                                        data.map((item:any, index) => {
+                                            return (
+                                                <tr key={index}>
+                                                    <th scope="row">{index+1}</th>
+                                                    <td>{item.img}</td>
+                                                    <td>{item.name}</td>
+                                                    <td>{item.cargo}</td>
+                                                    <td>{item.date}</td>
+                                                    <td>
+                                                        <a href={`/update/${item.id}`}>
+                                                            <button className="btn btn-edit">Edit</button>
+                                                        </a>
+                                                        <button
+                                                            className="btn btn-delete"
+                                                            onClick={() => onDeleteUser(item.id)}
+                                                        >
+                                                            Delete
+                                                        </button>
+                                                        <a href={`/view/${item.id}`}>
+                                                            <button className="btn btn-view">View</button>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            );
+                                        })}
                                 </tbody>
                             </table>
                         </div>

@@ -6,9 +6,9 @@ import { Api } from "../../service";
 import "./register.css"
 
 export default function Register() {
-    const auth = useAuth();
+    const auth = useAuth(); 
     const [state, setState] = useState(auth);
-    const { id, img, name, email, password, token } = state;
+    const {id, img, name, email, password } = state;
     const [error, setError] = useState(false);
     const navegate = useNavigate()
 
@@ -34,11 +34,11 @@ export default function Register() {
 
     const handleSubmit = (e: { preventDefault: () => void; }) => {
         e.preventDefault();
-        // if (!id) {
+        if (!id) {
         addUser(state);
-        // } else {
-        //     updateUser(state, id);
-        // }
+        } else {
+            updateUser(state, id);
+        }
     };
 
     return (
@@ -53,7 +53,7 @@ export default function Register() {
                         </> : <></>}
                     </div>
                     <div className="card-title">
-                        {!auth.token ? <><h2>Registrar</h2></> : <><h2>Alteração</h2></>}
+                        {!auth.id ? <><h2>Registrar</h2></> : <><h2>Alteração</h2></>}
                     </div>
                     <div className="card-body">
                         <form onSubmit={handleSubmit} encType="multipart/form-data">

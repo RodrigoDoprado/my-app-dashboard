@@ -16,8 +16,8 @@ export default function CreateProduct() {
     const [state, setState] = useState(initialState);
     const { img, name, description, category, genre } = state;
     const [error, setError] = useState(false);
-    // const [selectGenre] = useState([]);
-    // const [selectCategory] = useState([]);
+    const [selectGenre, setSelectGenre] = useState([]);
+    const [selectCategory, setSelectCategory] = useState([]);
     const navegate = useNavigate();
 
     const handleInputChange = (e: { target: { name: any; value: any; }; }) => {
@@ -92,6 +92,13 @@ export default function CreateProduct() {
                                                 onChange={handleInputChange}
                                             >
                                                 <option value={0}>Categoria</option>
+                                                {selectCategory &&
+                                                    selectCategory.map((item: any) => {
+                                                        return (
+                                                            <option value={item.id}>{item.name}</option>
+                                                        )
+                                                    })
+                                                }
                                             </select>
                                         </div>
                                         <div className="col">
@@ -104,6 +111,13 @@ export default function CreateProduct() {
                                                 onChange={handleInputChange}
                                             >
                                                 <option value={0}>Gênero</option>
+                                                {selectGenre &&
+                                                    selectGenre.map((item: any) => {
+                                                        return (
+                                                            <option value={item.id}>{item.name}</option>
+                                                        )
+                                                    })
+                                                }
                                             </select>
                                         </div>
                                         <div className="col">
