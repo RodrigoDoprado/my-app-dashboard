@@ -19,7 +19,7 @@ export default function DashboardIndex() {
                                 <div className="card">
                                     <div className="card-head">
                                         <h1 className="card-title">Dashboard</h1>
-                                        <h3 className="card-subtitle">Bem vindo {auth.name}</h3>
+                                        <h3 className="card-subtitle">Bem vindo {auth.firstName+" "+auth.lastName}</h3>
                                     </div>
                                     <div className="card-body">
                                         <p className="card-text">id: {auth.id}</p>
